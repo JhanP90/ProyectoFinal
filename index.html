@@ -3,88 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energía Renovable - Futuro Sostenible</title>
+    <title>Power Green Energy - Energía Renovable</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="header">
-        <div class="container">
-            <a href="#" class="logo">Eco<span>Power</span></a>
-            <nav class="nav">
-                <button class="nav-toggle" aria-label="Abrir menú">
-                    <i class="fas fa-bars"></i>
-                </button>
+        <div class="container nav">
+            <a href="#" class="logo">💡Ener<span>loop</span></a>
+            
+            <button class="nav-toggle" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav class="nav-menu-list">
                 <ul class="nav-menu">
-                    <li class="nav-menu-item"><a href="#inicio" class="nav-menu-link">Inicio</a></li>
-                    <li class="nav-menu-item"><a href="#tipos" class="nav-menu-link">Tipos</a></li>
-                    <li class="nav-menu-item"><a href="#beneficios" class="nav-menu-link">Beneficios</a></li>
-                    <li class="nav-menu-item"><a href="#proyectos" class="nav-menu-link">Proyectos</a></li>
-                    <li class="nav-menu-item"><a href="#contacto" class="nav-menu-link">Contacto</a></li>
+                    <li class="nav-menu-item"><a href="#hero" class="nav-menu-link">Inicio</a></li>
+                    <li class="nav-menu-item"><a href="#energy-types" class="nav-menu-link">Tipos de Energía</a></li>
+                    <li class="nav-menu-item"><a href="#benefits" class="nav-menu-link">Beneficios</a></li>
+                    <li class="nav-menu-item"><a href="#contact" class="nav-menu-link">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="inicio" class="hero">
+        <section id="hero" class="hero">
             <div class="container">
-                <h1>El Futuro es <span>Renovable</span></h1>
-                <p>Descubre cómo la energía sostenible está transformando nuestro planeta</p>
-                <a href="#tipos" class="btn">Explorar</a>
+                <h1>El Futuro es <span>Renovable🍃</span></h1>
+                <p>Impulsamos el futuro con energía limpia, inteligente y sostenible.</p>
+                <a href="#energy-types" class="btn">Explora Más</a>
             </div>
         </section>
 
-        <section id="tipos" class="energy-types">
+        <section id="energy-types" class="energy-types">
             <div class="container">
-                <h2>Tipos de Energía Renovable</h2>
+                <h2>Nuestros Tipos de Energía</h2>
                 <div class="energy-grid">
-                    <!-- Contenido dinámico se cargará con JavaScript -->
+                    <div class="energy-card">
+                        <div class="energy-img">
+                            <img src="https://images.unsplash.com/photo-1517482816999-724e54ce6992?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Energía Solar">
+                        </div>
+                        <div class="energy-content">
+                            <h3>Energía Solar</h3>
+                            <p>Aprovechamos la luz del sol para generar electricidad limpia y abundante.</p>
+                            <div class="energy-stats">
+                                <div class="stat">
+                                    <h4>95%</h4>
+                                    <p>Eficiencia</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>30+</h4>
+                                    <p>Años de vida</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="energy-card">
+                        <div class="energy-img">
+                            <img src="https://images.unsplash.com/photo-1549445199-3543d831206f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Energía Eólica">
+                        </div>
+                        <div class="energy-content">
+                            <h3>Energía Eólica</h3>
+                            <p>Transformamos la fuerza del viento en energía eléctrica sostenible.</p>
+                            <div class="energy-stats">
+                                <div class="stat">
+                                    <h4>85%</h4>
+                                    <p>Disponibilidad</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>25+</h4>
+                                    <p>Años de vida</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="energy-card">
+                        <div class="energy-img">
+                            <img src="https://images.unsplash.com/photo-1555546522-8d76985c4e47?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Energía Hidráulica">
+                        </div>
+                        <div class="energy-content">
+                            <h3>Energía Hidráulica</h3>
+                            <p>Utilizamos el poder del agua para generar electricidad de forma constante.</p>
+                            <div class="energy-stats">
+                                <div class="stat">
+                                    <h4>99%</h4>
+                                    <p>Confiabilidad</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>50+</h4>
+                                    <p>Años de vida</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="beneficios" class="benefits">
+        <section id="benefits" class="benefits">
             <div class="container">
                 <h2>Beneficios de la Energía Renovable</h2>
                 <div class="benefits-content">
                     <div class="benefits-text">
-                        <p>La energía renovable ofrece numerosas ventajas para nuestro planeta y nuestra sociedad:</p>
+                        <p>La adopción de energías renovables no solo es una elección responsable con el medio ambiente, sino que también ofrece un sinfín de ventajas económicas y sociales. En PowerGreen, estamos comprometidos con un futuro sostenible.</p>
                         <ul>
-                            <li>Reduce las emisiones de gases de efecto invernadero</li>
-                            <li>Disminuye la dependencia de combustibles fósiles</li>
-                            <li>Genera empleos locales</li>
-                            <li>Promueve la sostenibilidad a largo plazo</li>
+                            <li>Reducción significativa de la huella de carbono.</li>
+                            <li>Independencia energética y estabilidad de precios.</li>
+                            <li>Creación de empleos verdes y desarrollo económico local.</li>
+                            <li>Menor contaminación del aire y del agua.</li>
+                            <li>Innovación tecnológica y nuevas oportunidades de inversión.</li>
                         </ul>
+                        <a href="#contact" class="btn">Solicitar Información</a>
                     </div>
-                    <div class="benefits-chart">
+                    <div class="benefits-chart-container">
                         <canvas id="benefitsChart"></canvas>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="proyectos" class="projects">
-            <div class="container">
-                <h2>Proyectos Destacados</h2>
-                <div class="projects-slider">
-                    <!-- Contenido dinámico del slider -->
-                </div>
-            </div>
-        </section>
-
-        <section id="contacto" class="contact">
+        <section id="contact" class="contact">
             <div class="container">
                 <h2>Contáctanos</h2>
-                <form id="contactForm" class="contact-form">
+                <form class="contact-form">
                     <div class="form-group">
-                        <input type="text" id="name" name="name" required placeholder="Nombre completo">
+                        <input type="text" id="name" name="name" placeholder="Tu Nombre" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" required placeholder="Correo electrónico">
+                        <input type="email" id="email" name="email" placeholder="Tu Email" required>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" name="message" required placeholder="Tu mensaje"></textarea>
+                        <input type="text" id="subject" name="subject" placeholder="Asunto" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Tu Mensaje" required></textarea>
                     </div>
                     <button type="submit" class="btn">Enviar Mensaje</button>
                 </form>
@@ -93,38 +147,36 @@
     </main>
 
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>EcoPower</h3>
-                    <p>Promoviendo un futuro sostenible a través de la energía renovable.</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Enlaces rápidos</h3>
-                    <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#tipos">Tipos de energía</a></li>
-                        <li><a href="#beneficios">Beneficios</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h3>Síguenos</h3>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h3>Power<span>Green</span></h3>
+                <p>Comprometidos con un futuro sostenible a través de soluciones de energía renovable innovadoras y eficientes.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#energy-types">Tipos de Energía</a></li>
+                    <li><a href="#benefits">Beneficios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 EcoPower. Todos los derechos reservados.</p>
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 PowerGreen Energy. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>

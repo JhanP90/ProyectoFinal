@@ -1,18 +1,28 @@
-/* Variables CSS */
+/* Variables CSS para una gestión de colores y estilos centralizada */
 :root {
-    --primary-color: #4CAF50;
-    --secondary-color: #2E7D32;
-    --accent-color: #8BC34A;
-    --dark-color: #263238;
-    --light-color: #f5f5f5;
-    --text-color: #333;
-    --text-light: #777;
-    --white: #fff;
-    --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
+    --primary-color: #38b000; /* Un verde vibrante y natural para elementos principales */
+    --secondary-color: #2b8b00; /* Un verde más oscuro, ideal para estados hover o acentos sutiles */
+    --accent-color: #ffc107; /* Amarillo soleado para destacar elementos clave */
+    --dark-color: #2c3e50; /* Azul oscuro casi negro para texto principal y fondos oscuros */
+    --light-color: #f8f9fa; /* Un gris muy claro para fondos de sección */
+    --text-color: #495057; /* Gris oscuro estándar para el texto general */
+    --text-light: #6c757d; /* Gris más claro para texto secundario o descripciones */
+    --white: #ffffff; /* Blanco puro */
+
+    /* Sombras para profundidad y efectos visuales */
+    --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08); /* Sombra pequeña y discreta */
+    --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.1); /* Sombra mediana para tarjetas o elementos flotantes */
+    --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.15); /* Sombra grande para estados hover o elementos importantes */
+
+    /* Transiciones para suavizar los cambios de estado */
+    --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Transición rápida para interactividad */
+    --transition-slow: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición más suave para animaciones de entrada/salida */
 }
 
-/* Reset y estilos base */
+/* Importar Google Fonts: Montserrat para encabezados y Open Sans para el cuerpo */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap');
+
+/* Reset básico y estilos globales para asegurar consistencia entre navegadores */
 * {
     margin: 0;
     padding: 0;
@@ -20,389 +30,551 @@
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Desplazamiento suave al hacer clic en enlaces de anclaje */
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--white);
-    overflow-x: hidden;
+    font-family: 'Open Sans', sans-serif; /* Fuente principal para el cuerpo del texto */
+    line-height: 1.6; /* Espaciado entre líneas para mejor legibilidad */
+    color: var(--text-color); /* Color de texto general */
+    background-color: var(--light-color); /* Color de fondo general de la página */
+    overflow-x: hidden; /* Evita el desplazamiento horizontal no deseado */
 }
 
+/* Estado del cuerpo cuando el menú de navegación móvil está abierto */
+body.nav-open {
+    overflow: hidden; /* Deshabilita el desplazamiento de la página principal */
+}
+
+/* Overlay oscuro que aparece cuando el menú móvil está activo */
+body.nav-open::before {
+    content: '';
+    position: fixed; /* Fijo en la ventana de visualización */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Color y opacidad del overlay */
+    z-index: 999; /* Asegura que esté por encima del contenido principal */
+    pointer-events: auto; /* Permite interacciones como hacer clic para cerrar el menú */
+    transition: opacity 0.4s ease-in-out; /* Transición suave para la aparición/desaparición */
+}
+
+/* El overlay no es interactivo ni visible cuando el menú no está activo */
+body:not(.nav-open)::before {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Contenedor central para limitar el ancho del contenido */
 .container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 1200px; /* Ancho máximo estándar */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 0 25px; /* Padding lateral para evitar que el contenido toque los bordes */
 }
 
-/* Header */
+/* --- Estilos del Encabezado (Header) --- */
 .header {
-    background-color: var(--white);
-    box-shadow: var(--shadow);
-    position: fixed;
+    background-color: var(--white); /* Fondo blanco para el encabezado */
+    box-shadow: var(--shadow-sm); /* Sombra sutil por defecto */
+    position: fixed; /* Fijo en la parte superior de la ventana */
     width: 100%;
     top: 0;
-    z-index: 1000;
-    transition: var(--transition);
+    z-index: 1000; /* Asegura que esté por encima de la mayoría del contenido */
+    transition: var(--transition-slow); /* Transición suave para cambios de estado */
+    padding: 0.8rem 0; /* Padding inicial del encabezado */
 }
 
+/* Estilos del encabezado cuando el usuario hace scroll */
 .header.scrolled {
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.4rem 0; /* Encabezado más compacto */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra ligeramente más pronunciada */
 }
 
-.logo {
+/* Ajuste del tamaño del logo cuando el encabezado se hace más pequeño */
+.header.scrolled .logo {
     font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--dark-color);
-    text-decoration: none;
 }
 
+/* Estilos del logo */
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.3rem; /* Tamaño de fuente del logo */
+    font-weight: 800; /* Negrita extra para el logo */
+    color: var(--dark-color);
+    text-decoration: none; /* Quita el subrayado del enlace */
+    transition: var(--transition-slow); /* Transición para el tamaño de fuente */
+    letter-spacing: -1px; /* Espaciado de letras ajustado */
+}
+
+/* Color del "Power" en el logo */
 .logo span {
     color: var(--primary-color);
 }
 
-/* Navegación */
+/* --- Estilos de la Navegación (Nav) --- */
 .nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 0;
+    display: flex; /* Utiliza flexbox para alinear elementos */
+    align-items: center; /* Alinea verticalmente al centro */
+    justify-content: space-between; /* Distribuye el espacio entre logo y menú */
 }
 
+/* Botón de alternar menú para dispositivos móviles (hamburguesa) */
 .nav-toggle {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
+    background: none; /* Sin fondo */
+    border: none; /* Sin borde */
+    font-size: 1.9rem; /* Tamaño del icono */
     color: var(--dark-color);
     cursor: pointer;
-    display: none;
+    display: none; /* Oculto por defecto en desktop */
+    transition: var(--transition-fast);
+    padding: 5px; /* Área de clic expandida */
 }
 
+.nav-toggle:hover {
+    color: var(--primary-color); /* Cambio de color al pasar el ratón */
+}
+
+/* Lista del menú de navegación para ESCRITORIOS */
 .nav-menu {
-    display: flex;
-    list-style: none;
+    display: flex; /* Muestra los elementos del menú en línea */
+    list-style: none; /* Quita los puntos de la lista */
+    margin-left: auto; /* Empuja el menú a la derecha */
 }
 
 .nav-menu-item {
-    margin-left: 2rem;
+    margin-left: 2.8rem; /* Espacio entre los elementos del menú */
 }
 
+/* Enlaces del menú de navegación */
 .nav-menu-link {
+    font-family: 'Montserrat', sans-serif;
     color: var(--dark-color);
     text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-    position: relative;
+    font-weight: 600; /* Seminegrita */
+    transition: var(--transition-fast);
+    position: relative; /* Para el efecto de subrayado */
+    padding-bottom: 5px; /* Espacio para el subrayado */
+    font-size: 1.05rem;
 }
 
 .nav-menu-link:hover {
-    color: var(--primary-color);
+    color: var(--primary-color); /* Cambio de color al pasar el ratón */
 }
 
+/* Efecto de subrayado al pasar el ratón */
 .nav-menu-link::after {
     content: '';
     position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
+    bottom: 0;
+    left: 50%; /* Centra el subrayado */
+    transform: translateX(-50%);
+    width: 0; /* Inicialmente sin ancho */
+    height: 3px;
     background-color: var(--primary-color);
-    transition: var(--transition);
+    border-radius: 2px;
+    transition: width 0.3s ease-out; /* Animación solo en el ancho */
 }
 
 .nav-menu-link:hover::after {
-    width: 100%;
+    width: 100%; /* El subrayado se expande al 100% */
 }
 
-/* Hero Section */
+/* --- Sección Hero (Principal) --- */
 .hero {
-    height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    height: 100vh; /* Altura de la ventana de visualización completa */
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), /* Overlay oscuro */
+                url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover; /* Imagen de fondo */
     color: var(--white);
     display: flex;
-    align-items: center;
-    text-align: center;
-    padding-top: 80px;
+    align-items: center; /* Centra verticalmente el contenido */
+    text-align: center; /* Centra horizontalmente el texto */
+    padding-top: 100px; /* Asegura espacio debajo del header fijo */
+    position: relative;
+    overflow: hidden; /* Oculta cualquier contenido que se desborde */
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5rem; /* Tamaño grande para el título principal */
+    margin-bottom: 1.8rem;
+    line-height: 1.15;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4); /* Sombra para el texto */
+    animation: fadeInDown 1s ease-out forwards; /* Animación de entrada: aparece desde arriba */
 }
 
 .hero h1 span {
-    color: var(--accent-color);
+    color: var(--primary-color); /* Ahora usará el verde principal */
 }
 
 .hero p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 2rem;
+    font-size: 1.45rem;
+    max-width: 850px;
+    margin: 0 auto 3rem; /* Centra el párrafo y añade margen inferior */
+    opacity: 0.9;
+    animation: fadeInUp 1.2s ease-out forwards; /* Animación de entrada: aparece desde abajo */
+    animation-delay: 0.3s; /* Retraso para que aparezca después del título */
 }
 
-/* Botones */
+/* Keyframes para las animaciones del Hero */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Estilos de Botones Globales --- */
 .btn {
-    display: inline-block;
-    background-color: var(--primary-color);
+    display: inline-block; /* Permite establecer ancho/alto y márgenes */
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); /* Degradado de color */
     color: var(--white);
-    padding: 0.8rem 2rem;
-    border: none;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: var(--transition);
+    padding: 1.1rem 3rem; /* Relleno interno */
+    border: none; /* Sin borde */
+    border-radius: 999px; /* Forma de píldora */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    font-weight: 700; /* Negrita */
+    font-size: 1.15rem;
+    transition: var(--transition-slow); /* Transición global para todos los efectos */
     cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra inicial */
+    letter-spacing: 0.5px; /* Espaciado de letras */
+    position: relative; /* Para posibles efectos internos */
+    overflow: hidden; /* Oculta cualquier desbordamiento para efectos */
 }
 
 .btn:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%); /* Invierte el degradado al pasar el ratón */
+    transform: translateY(-7px); /* Eleva el botón al pasar el ratón */
+    box-shadow: var(--shadow-lg); /* Sombra más grande al pasar el ratón */
 }
 
-/* Secciones comunes */
+.btn:active {
+    transform: translateY(-3px); /* Efecto de "presión" al hacer clic */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+    background: var(--secondary-color); /* Color sólido al presionar */
+}
+
+/* --- Estilos Comunes de Sección --- */
 section {
-    padding: 5rem 0;
+    padding: 6rem 0; /* Relleno vertical para todas las secciones */
+    background-color: var(--white); /* Fondo predeterminado */
+    margin-bottom: 2rem; /* Margen inferior entre secciones */
+    border-radius: 12px; /* Bordes ligeramente redondeados */
+    box-shadow: var(--shadow-sm); /* Sombra suave para separar secciones */
+    overflow: hidden; /* Para contener animaciones o efectos dentro */
 }
 
+/* Fondo alterno para secciones pares para un diseño más dinámico */
+section:nth-of-type(even) {
+    background-color: var(--light-color);
+}
+
+/* Estilos de los títulos de sección (h2) */
 h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    text-align: center;
-    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem; /* Tamaño grande para los títulos de sección */
+    margin-bottom: 4.5rem; /* Espacio significativo debajo del título */
+    text-align: center; /* Centra el texto */
+    position: relative; /* Para el efecto de subrayado */
+    color: var(--dark-color);
+    font-weight: 700; /* Negrita */
+    text-transform: uppercase; /* Todo en mayúsculas */
+    letter-spacing: 1px; /* Espaciado sutil entre letras */
 }
 
+/* Efecto de subrayado animado para los títulos de sección */
 h2::after {
     content: '';
     position: absolute;
-    bottom: -10px;
+    bottom: -18px; /* Posición del subrayado */
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
+    width: 120px; /* Ancho inicial del subrayado */
+    height: 6px; /* Grosor del subrayado */
     background-color: var(--primary-color);
-    border-radius: 2px;
+    border-radius: 3px;
+    animation: expandLine 1s ease-out forwards; /* Animación de expansión */
 }
 
-/* Tipos de energía */
+/* Keyframes para la animación del subrayado */
+@keyframes expandLine {
+    from {
+        width: 0;
+        opacity: 0;
+    }
+    to {
+        width: 120px;
+        opacity: 1;
+    }
+}
+
+/* --- Sección "Tipos de Energía" --- */
+.energy-types {
+    background-color: var(--light-color); /* Fondo específico para esta sección */
+}
+
 .energy-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    /* Columnas adaptables: mínimo 290px, se expanden equitativamente */
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 3rem; /* Espacio entre las tarjetas de energía */
     margin-top: 3rem;
 }
 
 .energy-card {
     background-color: var(--white);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    border-radius: 15px; /* Bordes redondeados */
+    overflow: hidden; /* Asegura que la imagen no se desborde */
+    box-shadow: var(--shadow-md); /* Sombra predeterminada */
+    transition: var(--transition-slow); /* Transición para efectos de hover */
+    border: 1px solid rgba(0, 0, 0, 0.07); /* Borde sutil */
+    display: flex;
+    flex-direction: column; /* Organiza el contenido en columna */
+    position: relative;
 }
 
 .energy-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-15px); /* Eleva la tarjeta al pasar el ratón */
+    box-shadow: var(--shadow-lg); /* Sombra más grande al pasar el ratón */
 }
 
 .energy-img {
-    height: 200px;
+    height: 230px; /* Altura fija para la imagen */
     overflow: hidden;
+    position: relative;
 }
 
 .energy-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
+    object-fit: cover; /* Cubre el área manteniendo la relación de aspecto */
+    transition: var(--transition-slow); /* Transición para el zoom */
 }
 
 .energy-card:hover .energy-img img {
-    transform: scale(1.1);
+    transform: scale(1.08); /* Zoom sutil en la imagen al pasar el ratón */
 }
 
 .energy-content {
-    padding: 1.5rem;
+    padding: 2rem; /* Relleno interno del contenido de la tarjeta */
+    flex-grow: 1; /* Permite que el contenido ocupe el espacio disponible */
+    display: flex;
+    flex-direction: column;
 }
 
 .energy-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
     color: var(--dark-color);
+    font-weight: 700;
 }
 
 .energy-content p {
     color: var(--text-light);
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
 .energy-stats {
     display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
+    justify-content: space-around; /* Distribuye el espacio entre las estadísticas */
+    margin-top: 1.5rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid #eee; /* Línea divisoria superior */
 }
 
 .stat {
     text-align: center;
+    padding: 0 10px;
 }
 
 .stat h4 {
-    font-size: 1.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem; /* Números de estadísticas más grandes */
     color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-weight: 800;
 }
 
 .stat p {
     font-size: 0.9rem;
     color: var(--text-light);
+    line-height: 1.3;
 }
 
-/* Beneficios */
+/* --- Sección "Beneficios" --- */
+.benefits {
+    background-color: var(--white);
+}
+
 .benefits-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-}
-
-.benefits-text {
-    padding-right: 2rem;
+    /* Dos columnas: la primera flexible, la segunda un poco más grande */
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem; /* Espacio entre las columnas */
+    align-items: center; /* Alinea verticalmente el contenido */
 }
 
 .benefits-text p {
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-color);
 }
 
 .benefits-text ul {
-    list-style: none;
+    list-style: none; /* Quita los marcadores de lista por defecto */
+    margin-top: 2rem;
 }
 
 .benefits-text li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1.2rem;
     position: relative;
-    padding-left: 1.5rem;
+    padding-left: 2.2rem; /* Espacio para el icono personalizado */
+    font-size: 1.08rem;
+    color: var(--dark-color);
+    font-weight: 600;
 }
 
 .benefits-text li::before {
-    content: '✓';
+    content: '\f00c'; /* Icono de checkmark de Font Awesome */
+    font-family: 'Font Awesome 5 Free'; /* Asegura que se use la fuente correcta */
+    font-weight: 900; /* Para obtener la versión sólida del icono */
     position: absolute;
     left: 0;
     color: var(--primary-color);
-    font-weight: bold;
-}
-
-.benefits-chart {
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-/* Proyectos */
-.projects-slider {
-    margin-top: 3rem;
-    position: relative;
-}
-
-.project-slide {
-    background-color: var(--white);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
-
-.project-img {
-    height: 250px;
-    overflow: hidden;
-}
-
-.project-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.project-info {
-    padding: 1.5rem;
-}
-
-.project-info h3 {
     font-size: 1.3rem;
-    margin-bottom: 0.5rem;
+    top: 2px;
 }
 
-.project-info p {
-    color: var(--text-light);
-    margin-bottom: 1rem;
-}
-
-/* Contacto */
-.contact-form {
-    max-width: 600px;
+.benefits-chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Ancho máximo para el contenedor del gráfico */
     margin: 0 auto;
-    padding: 2rem;
+    background-color: var(--light-color);
+    border-radius: 15px;
+    padding: 30px; /* Relleno interno para el gráfico */
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.07); /* Sombra interna sutil */
+    height: 400px; /* Altura fija para el canvas del gráfico */
+    display: flex; /* Para centrar el canvas si es necesario */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Asegura que el canvas de Chart.js ocupe el 100% del contenedor */
+#benefitsChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* --- Sección "Contacto" --- */
+.contact {
     background-color: var(--white);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
+}
+
+.contact-form {
+    max-width: 700px; /* Ancho máximo del formulario */
+    margin: 0 auto; /* Centra el formulario */
+    padding: 3rem; /* Relleno interno */
+    background-color: var(--light-color);
+    border-radius: 20px; /* Bordes muy redondeados */
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem; /* Espacio entre los grupos de formulario */
 }
 
 .form-group input,
 .form-group textarea {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: inherit;
-    font-size: 1rem;
-    transition: var(--transition);
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 1.1rem 1.4rem; /* Relleno interno */
+    border: 2px solid #ddd; /* Borde sutil */
+    border-radius: 10px; /* Bordes redondeados */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.05rem;
+    color: var(--text-color);
+    background-color: var(--white);
+    transition: var(--transition-fast);
 }
 
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-light);
+    opacity: 0.7; /* Texto del placeholder más transparente */
+}
+
+/* Estilos al enfocar los campos del formulario */
 .form-group input:focus,
 .form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+    outline: none; /* Elimina el contorno predeterminado del navegador */
+    border-color: var(--primary-color); /* Borde de color primario al enfocar */
+    box-shadow: 0 0 0 5px rgba(56, 176, 0, 0.2); /* Sombra suave para el enfoque */
+    background-color: #fefefe; /* Fondo ligeramente más claro al enfocar */
 }
 
 .form-group textarea {
-    min-height: 150px;
-    resize: vertical;
+    min-height: 200px; /* Altura mínima para el área de texto */
+    resize: vertical; /* Permite redimensionar solo verticalmente */
 }
 
-/* Footer */
+/* --- Pie de Página (Footer) --- */
 .footer {
-    background-color: var(--dark-color);
+    background-color: var(--dark-color); /* Fondo oscuro para el pie de página */
     color: var(--white);
-    padding: 3rem 0 0;
+    padding: 4.5rem 0 0; /* Relleno superior e inferior */
+    font-size: 0.95rem;
 }
 
 .footer-content {
     display: grid;
+    /* Columnas adaptables para el contenido del footer */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+    gap: 3.5rem; /* Espacio entre las columnas */
+    margin-bottom: 3.5rem;
 }
 
 .footer-info h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--white);
+    font-weight: 800;
 }
 
 .footer-info p {
-    color: #aaa;
+    color: #bbb; /* Color de texto más claro */
+    line-height: 1.7;
 }
 
 .footer-links h3,
 .footer-social h3 {
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    color: var(--white);
+    font-weight: 600;
 }
 
 .footer-links ul {
@@ -410,108 +582,245 @@ h2::after {
 }
 
 .footer-links li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
 }
 
 .footer-links a {
-    color: #aaa;
+    color: #bbb;
     text-decoration: none;
-    transition: var(--transition);
+    transition: var(--transition-fast);
+    position: relative;
+    padding-left: 0; /* Asegura que el padding inicial sea 0 para la animación */
 }
 
 .footer-links a:hover {
-    color: var(--accent-color);
-    padding-left: 5px;
+    color: var(--accent-color); /* Cambio de color al pasar el ratón */
+    padding-left: 10px; /* Deslizamiento sutil al pasar el ratón */
 }
 
 .social-icons {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem; /* Espacio entre los iconos sociales */
 }
 
 .social-icons a {
-    display: inline-flex;
+    display: inline-flex; /* Permite centrar el icono y aplicar dimensiones */
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
+    width: 50px; /* Tamaño del círculo del icono */
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.15); /* Fondo semitransparente */
+    border-radius: 50%; /* Forma circular */
     color: var(--white);
-    font-size: 1.2rem;
-    transition: var(--transition);
+    font-size: 1.6rem;
+    transition: var(--transition-fast);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .social-icons a:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-3px);
+    background-color: var(--primary-color); /* Fondo de color primario al pasar el ratón */
+    transform: translateY(-5px) scale(1.1); /* Eleva y agranda el icono */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
 }
 
 .footer-bottom {
     text-align: center;
-    padding: 1.5rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Línea divisoria */
     color: #aaa;
     font-size: 0.9rem;
 }
 
-/* Responsive Design */
+/* --- Media Queries para Diseño Responsivo --- */
+
+/* Pantallas medianas (tablets y laptops pequeñas) */
 @media (max-width: 992px) {
+    .nav-menu-item {
+        margin-left: 1.8rem; /* Reduce el espacio entre elementos del menú */
+    }
+
+    .hero h1 {
+        font-size: 4rem; /* Ajusta el tamaño del título del hero */
+    }
+
+    .hero p {
+        font-size: 1.3rem; /* Ajusta el tamaño del párrafo del hero */
+    }
+
+    h2 {
+        font-size: 3rem; /* Ajusta el tamaño de los títulos de sección */
+    }
+
     .benefits-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Una sola columna para los beneficios */
+        gap: 3.5rem;
     }
     
     .benefits-text {
-        padding-right: 0;
-        margin-bottom: 2rem;
+        text-align: center; /* Centra el texto de beneficios */
+    }
+
+    .benefits-text ul {
+        text-align: left; /* Alinea la lista a la izquierda */
+        max-width: 450px; /* Limita el ancho de la lista */
+        margin: 2rem auto; /* Centra la lista */
+    }
+
+    .benefits-chart-container {
+        margin-top: 2.5rem; /* Margen superior para el contenedor del gráfico */
+    }
+
+    .footer-content {
+        gap: 2.5rem;
+        padding: 0 20px; /* Ajusta el padding del footer */
     }
 }
 
+/* Pantallas pequeñas (tablets en vertical y móviles grandes) */
 @media (max-width: 768px) {
+    .nav {
+        padding: 0.7rem 0; /* Reduce el padding del nav */
+    }
+
+    .logo {
+        font-size: 2rem; /* Ajusta el tamaño del logo */
+    }
+
     .nav-toggle {
-        display: block;
+        display: block; /* Muestra el botón de hamburguesa */
+        z-index: 1001; /* Asegura que esté por encima del menú */
     }
     
+    /* Menú móvil: Oculto por defecto, se muestra con JavaScript */
     .nav-menu {
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 80px);
+        position: fixed; /* Posicionamiento fijo para el menú móvil */
+        top: 0;
+        left: -100%; /* Oculto fuera de la pantalla a la izquierda */
+        width: 75%; /* Ancho del menú móvil */
+        height: 100vh; /* Ocupa toda la altura de la ventana */
         background-color: var(--white);
-        flex-direction: column;
-        align-items: center;
-        padding: 2rem 0;
-        transition: var(--transition);
+        flex-direction: column; /* Apila los elementos verticalmente */
+        justify-content: center; /* Centra verticalmente los elementos */
+        align-items: center; /* Centra horizontalmente los elementos */
+        padding: 0;
+        transition: left 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Transición con efecto "bounce" */
+        box-shadow: 3px 0 15px rgba(0, 0, 0, 0.15); /* Sombra lateral */
+        z-index: 1000; /* Por encima del overlay */
+        margin-left: 0; /* Resetea el margin-left: auto para el menú móvil */
     }
     
     .nav-menu.active {
-        left: 0;
+        left: 0; /* Muestra el menú al activarse (controlado por JS) */
     }
     
     .nav-menu-item {
-        margin: 1rem 0;
+        margin: 1.8rem 0; /* Margen vertical para los elementos del menú */
+    }
+
+    .nav-menu-link {
+        font-size: 1.4rem; /* Enlaces más grandes para facilitar el toque */
     }
     
+    .hero {
+        min-height: 75vh; /* Reduce la altura mínima del hero */
+        padding: 7rem 0 5rem;
+    }
+
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 3.2rem;
     }
     
     section {
-        padding: 3rem 0;
+        padding: 4.5rem 0; /* Reduce el padding vertical de las secciones */
+    }
+
+    h2 {
+        font-size: 2.5rem;
+        margin-bottom: 3.5rem;
+    }
+
+    .energy-grid {
+        grid-template-columns: 1fr; /* Una sola columna para las tarjetas de energía */
+        gap: 2.5rem;
+    }
+
+    .energy-card {
+        max-width: 450px; /* Limita el ancho de las tarjetas */
+        margin: 0 auto; /* Centra las tarjetas */
+    }
+
+    .contact-form {
+        padding: 2.5rem; /* Reduce el padding del formulario de contacto */
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr; /* Una sola columna para el footer */
+        text-align: center; /* Centra el texto del footer */
+    }
+
+    .footer-links ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra los enlaces del footer */
+    }
+
+    .footer-social {
+        margin-top: 2rem; /* Margen superior para los iconos sociales */
+    }
+
+    .social-icons {
+        justify-content: center; /* Centra los iconos sociales */
     }
 }
 
+/* Pantallas muy pequeñas (móviles) */
 @media (max-width: 576px) {
+    .container {
+        padding: 0 15px; /* Reduce aún más el padding del contenedor */
+    }
+
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.6rem; /* Ajusta el tamaño del título del hero */
     }
     
+    .hero p {
+        font-size: 1.1rem; /* Ajusta el tamaño del párrafo del hero */
+    }
+
+    .btn {
+        padding: 0.9rem 2.5rem; /* Reduce el padding de los botones */
+        font-size: 1.05rem;
+    }
+
     h2 {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    h2::after {
+        width: 90px;
+        height: 4px;
+        bottom: -12px;
+    }
+
+    .energy-content h3 {
+        font-size: 1.6rem;
+    }
+
+    .stat h4 {
         font-size: 1.8rem;
     }
-    
-    .energy-grid {
-        grid-template-columns: 1fr;
+
+    .benefits-text p {
+        font-size: 1.05rem;
+    }
+
+    .benefits-text li {
+        font-size: 1rem;
+    }
+
+    .contact-form {
+        padding: 2rem;
     }
 }
