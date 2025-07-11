@@ -113,6 +113,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Contador Animado para los kw ---
+    function animateCounter(element, endValue, duration = 3000) {
+        let start = 0;
+        const isInt = Number.isInteger(endValue);
+        const startTime = performance.now();
+        // Easing para suavidad
+        function easeOutCubic(t) {
+            return 1 - Math.pow(1 - t, 3);
+        }
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeOutCubic(progress);
+            const value = Math.floor(eased * (endValue - start) + start);
+            element.textContent = isInt ? value.toLocaleString('es-ES') : value;
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                element.textContent = isInt ? endValue.toLocaleString('es-ES') : endValue;
+            }
+        }
+        requestAnimationFrame(update);
+    }
+
+    function parseNumber(str) {
+        // Quita puntos, comas y signos no numéricos
+        return parseInt(str.replace(/[^\d]/g, ''));
+    }
+
+    // Instancia el contador solo para los kW
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
     // --- Inicializar AOS ---
     AOS.init();
+
 });

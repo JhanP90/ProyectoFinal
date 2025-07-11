@@ -433,6 +433,7 @@ h2::after {
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     gap: 3rem; /* Espacio entre las tarjetas de energía */
     margin-top: 3rem;
+    align-items: stretch;
 }
 
 .energy-card {
@@ -445,6 +446,7 @@ h2::after {
     display: flex;
     flex-direction: column; /* Organiza el contenido en columna */
     position: relative;
+    min-height: 450px;
 }
 
 .energy-card:hover {
@@ -474,14 +476,22 @@ h2::after {
     flex-grow: 1; /* Permite que el contenido ocupe el espacio disponible */
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .energy-content h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
-    color: var(--dark-color);
-    font-weight: 700;
+        min-height: 3em;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+        width: 100%;
+        padding-left: 0;
+        margin-left: 0;
+        white-space: nowrap;
+        font-size: 1.6rem; /* Puedes ajustar el tamaño si es necesario */
+        overflow: hidden;
+        text-overflow: ellipsis;
 }
 
 .energy-content p {
@@ -489,6 +499,8 @@ h2::after {
     margin-bottom: 1.5rem;
     font-size: 1rem;
     line-height: 1.7;
+    flex-grow: 1; /* Permite que el párrafo ocupe el espacio restante */
+    
 }
 
 .energy-stats {
@@ -497,6 +509,7 @@ h2::after {
     margin-top: 1.5rem;
     padding-top: 1.2rem;
     border-top: 1px solid #eee; /* Línea divisoria superior */
+    margin-top: auto;
 }
 
 .stat {
