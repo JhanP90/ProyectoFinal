@@ -13,14 +13,15 @@
     --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.08); /* Sombra pequeña y discreta */
     --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.1); /* Sombra mediana para tarjetas o elementos flotantes */
     --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.15); /* Sombra grande para estados hover o elementos importantes */
+    --shadow-btn-subtle: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil para botón */
 
     /* Transiciones para suavizar los cambios de estado */
     --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); /* Transición rápida para interactividad */
     --transition-slow: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transición más suave para animaciones de entrada/salida */
 }
 
-/* Importar Google Fonts: Montserrat para encabezados y Open Sans para el cuerpo */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap');
+/* Importar Google Fonts: Poppins para el cuerpo y Montserrat para encabezados */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* Reset básico y estilos globales para asegurar consistencia entre navegadores */
 * {
@@ -34,7 +35,7 @@ html {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif; /* Fuente principal para el cuerpo del texto */
+    font-family: 'Poppins', sans-serif; /* Fuente principal para el cuerpo del texto (moderna/elegante) */
     line-height: 1.6; /* Espaciado entre líneas para mejor legibilidad */
     color: var(--text-color); /* Color de texto general */
     background-color: var(--light-color); /* Color de fondo general de la página */
@@ -106,6 +107,7 @@ body:not(.nav-open)::before {
     text-decoration: none; /* Quita el subrayado del enlace */
     transition: var(--transition-slow); /* Transición para el tamaño de fuente */
     letter-spacing: -1px; /* Espaciado de letras ajustado */
+    /* Aquí estaba el flexbox para el bombillo SVG, que eliminaste. Si lo necesitas de nuevo, avísame. */
 }
 
 /* Color del "Power" en el logo */
@@ -149,7 +151,7 @@ body:not(.nav-open)::before {
 
 /* Enlaces del menú de navegación */
 .nav-menu-link {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Usar Poppins para enlaces */
     color: var(--dark-color);
     text-decoration: none;
     font-weight: 600; /* Seminegrita */
@@ -182,42 +184,115 @@ body:not(.nav-open)::before {
 }
 
 /* --- Sección Hero (Principal) --- */
+/* Carrusel automático de fondo para el Hero */
 .hero {
-    height: 100vh; /* Altura de la ventana de visualización completa */
-    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), /* Overlay oscuro */
-                url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover; /* Imagen de fondo */
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
     color: var(--white);
     display: flex;
-    align-items: center; /* Centra verticalmente el contenido */
-    text-align: center; /* Centra horizontalmente el texto */
-    padding-top: 100px; /* Asegura espacio debajo del header fijo */
-    position: relative;
-    overflow: hidden; /* Oculta cualquier contenido que se desborde */
+    text-align: center;
+    padding-top: 100px;
+    z-index: 1; /* Asegura que el contenido esté por encima de los pseudo-elementos */
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* Detrás del contenido y del overlay */
+    animation: heroCarousel 24s infinite ease-in-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Transición suave para el cambio de imagen */
+    transition: background-image 1s ease-in-out; 
+}
+
+/* Overlay oscuro encima de las imágenes - ¡OPACIDAD REDUCIDA AQUÍ! */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Cambiado de 0.7 a 0.3 para menos oscuridad */
+    z-index: -1; /* Encima de la imagen, pero detrás del contenido */
+}
+
+/* Keyframes para cambiar las imágenes del hero */
+@keyframes heroCarousel {
+    0%   { background-image: url('imgPrincipales/pexels-pixabay-325944.jpg'); }
+    20%  { background-image: url('imgPrincipales/pexels-pixabay-325944.jpg'); }
+
+    25%  { background-image: url('imgPrincipales/pexels-pixabay-356036.jpg'); }
+    45%  { background-image: url('imgPrincipales/pexels-pixabay-356036.jpg'); }
+
+    50%  { background-image: url('imgPrincipales/pexels-singkham-178541-1108572.jpg'); }
+    70%  { background-image: url('imgPrincipales/pexels-singkham-178541-1108572.jpg'); }
+
+    75%  { background-image: url('imgPrincipales/richard-james-sgmE-B_0p_I-unsplash.jpg'); }
+    95%  { background-image: url('imgPrincipales/richard-james-sgmE-B_0p_I-unsplash.jpg'); }
+
+    99%  { background-image: url('imgPrincipales/pexels-pixabay-325944.jpg'); } /* transición suave al inicio */
+    100% { background-image: url('imgPrincipales/pexels-pixabay-325944.jpg'); }
+}
+
+
+
+.hero-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Alinea verticalmente al centro */
+    align-items: center; /* Alinea horizontalmente al centro */
+    height: 100%; /* Ocupa el 100% de la altura disponible dentro del hero */
+    width: 100%;
 }
 
 .hero h1 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Fuente más moderna/elegante */
     font-size: 5rem; /* Tamaño grande para el título principal */
-    margin-bottom: 1.8rem;
+    margin-bottom: 1rem; /* Reducir margen */
     line-height: 1.15;
     text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4); /* Sombra para el texto */
     animation: fadeInDown 1s ease-out forwards; /* Animación de entrada: aparece desde arriba */
+    font-weight: 600; /* Fuente más suave */
 }
 
-.hero h1 span {
-    color: var(--primary-color); /* Ahora usará el verde principal */
+.hero h1 .text-bold { /* Estilo específico para "Renovable" */
+    font-family: 'Montserrat', sans-serif; /* Fuente bold para "Renovable" */
+    font-weight: 800; /* Extra bold */
+    color: var(--primary-color);
 }
 
-.hero p {
-    font-size: 1.45rem;
-    max-width: 850px;
-    margin: 0 auto 3rem; /* Centra el párrafo y añade margen inferior */
-    opacity: 0.9;
-    animation: fadeInUp 1.2s ease-out forwards; /* Animación de entrada: aparece desde abajo */
-    animation-delay: 0.3s; /* Retraso para que aparezca después del título */
+.hero-subtitle { /* Nuevo subtítulo animado */
+    font-size: 1.6rem; /* Un poco más grande */
+    max-width: 900px;
+    margin: 0 auto 2.5rem; /* Centra el párrafo y añade margen inferior */
+    opacity: 0; /* Oculto inicialmente */
+    animation: fadeIn 1.2s ease-out forwards; /* Animación de aparición suave */
+    animation-delay: 0.6s; /* Retraso para que aparezca después del título */
+    color: var(--white);
+    font-weight: 300;
 }
 
-/* Keyframes para las animaciones del Hero */
+/* Subtítulo animado: "Energía solar, eólica y más..." */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes para las animaciones del Hero (se mantienen) */
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -229,40 +304,35 @@ body:not(.nav-open)::before {
     }
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+/* El fadeInUp del párrafo ahora se usará en el botón si lo necesitas, pero con el nuevo subtitulo, este párrafo ya no existe. */
+
 
 /* --- Estilos de Botones Globales --- */
 .btn {
     display: inline-block; /* Permite establecer ancho/alto y márgenes */
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); /* Degradado de color */
+    background: linear-gradient(45deg, #6fd21c, #38b000); /* Verde más suave con degradado */
     color: var(--white);
-    padding: 1.1rem 3rem; /* Relleno interno */
+    padding: 1.3rem 3.5rem; /* Más grande */
     border: none; /* Sin borde */
     border-radius: 999px; /* Forma de píldora */
     text-decoration: none; /* Quita el subrayado del enlace */
     font-weight: 700; /* Negrita */
-    font-size: 1.15rem;
+    font-size: 1.25rem; /* Tamaño de fuente más grande */
     transition: var(--transition-slow); /* Transición global para todos los efectos */
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra inicial */
+    box-shadow: var(--shadow-btn-subtle); /* Sombra sutil inicial */
     letter-spacing: 0.5px; /* Espaciado de letras */
     position: relative; /* Para posibles efectos internos */
     overflow: hidden; /* Oculta cualquier desbordamiento para efectos */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    animation: fadeInUp 1.2s ease-out forwards; /* Animación de entrada: aparece desde abajo */
+    animation-delay: 0.9s; /* Retraso para que aparezca después del subtítulo */
 }
 
 .btn:hover {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%); /* Invierte el degradado al pasar el ratón */
+    background: linear-gradient(45deg, #38b000, #6fd21c); /* Invierte el degradado al pasar el ratón */
     transform: translateY(-7px); /* Eleva el botón al pasar el ratón */
-    box-shadow: var(--shadow-lg); /* Sombra más grande al pasar el ratón */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* Sombra más grande al pasar el ratón */
 }
 
 .btn:active {
@@ -270,6 +340,33 @@ body:not(.nav-open)::before {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
     background: var(--secondary-color); /* Color sólido al presionar */
 }
+
+/* Scroll-down indicator */
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--white);
+    font-size: 2.2rem;
+    animation: bounce 2s infinite; /* Animación de "rebote" */
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.8;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-20px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+}
+
 
 /* --- Estilos Comunes de Sección --- */
 section {
@@ -467,24 +564,49 @@ h2::after {
 }
 
 .benefits-chart-container {
-    position: relative;
-    width: 100%;
-    max-width: 600px; /* Ancho máximo para el contenedor del gráfico */
-    margin: 0 auto;
-    background-color: var(--light-color);
-    border-radius: 15px;
-    padding: 30px; /* Relleno interno para el gráfico */
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.07); /* Sombra interna sutil */
-    height: 400px; /* Altura fija para el canvas del gráfico */
-    display: flex; /* Para centrar el canvas si es necesario */
-    align-items: center;
+    background: linear-gradient(135deg, var(--light-color), #e6f5e6);
+    padding: 3rem;
+    border-radius: 25px;
+    box-shadow: var(--shadow-md);
+    height: 420px;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    animation: fadeInZoom 1.3s ease-out forwards;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-slow);
 }
 
-/* Asegura que el canvas de Chart.js ocupe el 100% del contenedor */
+.benefits-chart-container:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Efecto de aparición suave y ampliación */
+@keyframes fadeInZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Canvas del gráfico adaptado */
 #benefitsChart {
     width: 100% !important;
     height: 100% !important;
+    max-width: 600px;
+    max-height: 600px;
+}
+
+/* Añadir sombra sutil a leyendas y tooltips si se desea (opcional) */
+.chartjs-tooltip {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
 }
 
 /* --- Sección "Contacto" --- */
@@ -512,7 +634,7 @@ h2::after {
     padding: 1.1rem 1.4rem; /* Relleno interno */
     border: 2px solid #ddd; /* Borde sutil */
     border-radius: 10px; /* Bordes redondeados */
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Usar Poppins */
     font-size: 1.05rem;
     color: var(--text-color);
     background-color: var(--white);
@@ -644,8 +766,8 @@ h2::after {
         font-size: 4rem; /* Ajusta el tamaño del título del hero */
     }
 
-    .hero p {
-        font-size: 1.3rem; /* Ajusta el tamaño del párrafo del hero */
+    .hero-subtitle { /* Ajuste para subtítulo en pantallas medianas */
+        font-size: 1.4rem;
     }
 
     h2 {
@@ -730,6 +852,10 @@ h2::after {
     .hero h1 {
         font-size: 3.2rem;
     }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
     
     section {
         padding: 4.5rem 0; /* Reduce el padding vertical de las secciones */
@@ -784,8 +910,9 @@ h2::after {
         font-size: 2.6rem; /* Ajusta el tamaño del título del hero */
     }
     
-    .hero p {
-        font-size: 1.1rem; /* Ajusta el tamaño del párrafo del hero */
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
     }
 
     .btn {

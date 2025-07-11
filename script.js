@@ -1,25 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Lógica del Header Scroll ---
+    // --- Header Scroll ---
     const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) { // Si el scroll es mayor a 50px
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+        header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // --- Lógica del Menú de Navegación (Hamburguesa) ---
+    // --- Menú Hamburguesa ---
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const body = document.body;
 
     navToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
-        body.classList.toggle('nav-open'); // Agrega/quita clase al body para deshabilitar scroll y mostrar overlay
+        body.classList.toggle('nav-open');
     });
 
-    // Cerrar el menú al hacer clic en un enlace (para móviles)
     navMenu.querySelectorAll('.nav-menu-link').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('active');
@@ -27,8 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Cerrar el menú si se hace clic fuera de él (en el overlay)
-    // Esto se maneja mejor con el click en el body directamente si nav-open está activo
     body.addEventListener('click', (e) => {
         if (body.classList.contains('nav-open') && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
             navMenu.classList.remove('active');
@@ -36,50 +29,64 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
-    // --- Lógica del Gráfico Chart.js para Beneficios ---
+    // --- Gráfico Chart.js Mejorado ---
     const ctx = document.getElementById('benefitsChart');
 
-    if (ctx) { // Asegurarse de que el canvas existe
+    if (ctx) {
         new Chart(ctx, {
-            type: 'doughnut', // Tipo de gráfico: rosquilla
+            type: 'doughnut',
             data: {
                 labels: ['Reducción de Huella', 'Independencia Energética', 'Creación de Empleos', 'Menor Contaminación'],
                 datasets: [{
                     label: 'Impacto de la Energía Renovable',
-                    data: [35, 25, 20, 20], // Porcentajes de ejemplo
+                    data: [35, 25, 20, 20],
                     backgroundColor: [
-                        'rgba(56, 176, 0, 0.9)',   // var(--primary-color)
-                        'rgba(255, 193, 7, 0.9)', // var(--accent-color)
-                        'rgba(44, 62, 80, 0.9)',  // var(--dark-color)
-                        'rgba(43, 139, 0, 0.9)'   // var(--secondary-color)
+                        '#4CAF50',  // Verde fuerte
+                        '#FFC107',  // Amarillo solar
+                        '#37474F',  // Gris azulado
+                        '#66BB6A'   // Verde claro
                     ],
-                    borderColor: [
-                        '#ffffff',
-                        '#ffffff',
-                        '#ffffff',
-                        '#ffffff'
-                    ],
-                    borderWidth: 2
+                    hoverOffset: 15,
+                    borderColor: '#ffffff',
+                    borderWidth: 2,
+                    spacing: 3
                 }]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false, // Permite que el gráfico se adapte mejor al contenedor
+                maintainAspectRatio: false,
+                cutout: '60%',
+                animation: {
+                    animateRotate: true,
+                    animateScale: true,
+                    duration: 1500,
+                    easing: 'easeOutBounce'
+                },
                 plugins: {
                     legend: {
-                        position: 'bottom', // Leyenda en la parte inferior
+                        position: 'bottom',
                         labels: {
                             font: {
                                 size: 14,
-                                family: 'Open Sans'
+                                family: 'Poppins'
                             },
-                            color: 'var(--text-color)'
+                            color: '#333',
+                            padding: 20
                         }
                     },
                     tooltip: {
+                        backgroundColor: '#ffffff',
+                        borderColor: '#ccc',
+                        borderWidth: 1,
+                        titleColor: '#000',
+                        bodyColor: '#000',
+                        cornerRadius: 4,
+                        padding: 10,
+                        bodyFont: {
+                            family: 'Poppins'
+                        },
                         callbacks: {
-                            label: function(context) {
+                            label: function (context) {
                                 let label = context.label || '';
                                 if (label) {
                                     label += ': ';
@@ -89,16 +96,23 @@ document.addEventListener('DOMContentLoaded', () => {
                                 }
                                 return label;
                             }
-                        },
-                        titleFont: {
-                            family: 'Montserrat'
-                        },
-                        bodyFont: {
-                            family: 'Open Sans'
                         }
                     }
                 }
             }
         });
     }
+
+    // --- Smooth Scroll Flecha ---
+    const scrollDownIndicator = document.querySelector('.scroll-down-indicator');
+    if (scrollDownIndicator) {
+        scrollDownIndicator.addEventListener('click', () => {
+            document.querySelector('#energy-types').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    }
+
+    // --- Inicializar AOS ---
+    AOS.init();
 });

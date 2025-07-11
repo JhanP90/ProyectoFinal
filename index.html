@@ -3,16 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power Green Energy - Energía Renovable</title>
+    <title>Enerloop - Energía Renovable</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+      .bombillo-animado {
+        display: inline-block;
+        animation: bombilloParpadeo 1.5s infinite;
+        filter: brightness(1.2);
+        transition: filter 0.3s ease;
+      }
+
+      @keyframes bombilloParpadeo {
+        0%, 100% {
+          opacity: 1;
+          filter: brightness(1.2);
+        }
+        50% {
+          opacity: 0.4;
+          filter: brightness(0.5);
+        }
+      }
+    </style>
 </head>
 <body>
     <header class="header">
         <div class="container nav">
-            <a href="#" class="logo">💡Ener<span>loop</span></a>
-            
+            <a href="#" class="logo"><span class="bombillo-animado">💡</span>Ener<span>loop</span></a>
+
             <button class="nav-toggle" aria-label="Abrir menú">
                 <i class="fas fa-bars"></i>
             </button>
@@ -30,10 +51,13 @@
 
     <main>
         <section id="hero" class="hero">
-            <div class="container">
-                <h1>El Futuro es <span>Renovable🍃</span></h1>
-                <p>Impulsamos el futuro con energía limpia, inteligente y sostenible.</p>
-                <a href="#energy-types" class="btn">Explora Más</a>
+            <div class="container hero-content-wrapper">
+                <h1>Conectamos hoy con la energía del <span class="text-bold">Mañana</span></h1>
+                <p class="hero-subtitle">Energía solar, eólica y más para un mañana sostenible.</p>
+                <a href="#energy-types" class="btn">Ver Soluciones</a>
+                <div class="scroll-down-indicator">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
         </section>
 
@@ -43,7 +67,7 @@
                 <div class="energy-grid">
                     <div class="energy-card">
                         <div class="energy-img">
-                            <img src="https://images.unsplash.com/photo-1517482816999-724e54ce6992?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Energía Solar">
+                            <img src="img/nuno-marques-0GbrjL3vZF4-unsplash.jpg" alt="Energía Solar">
                         </div>
                         <div class="energy-content">
                             <h3>Energía Solar</h3>
@@ -51,7 +75,7 @@
                             <div class="energy-stats">
                                 <div class="stat">
                                     <h4>95%</h4>
-                                    <p>Eficiencia</p>
+                                    <p>kW</p>
                                 </div>
                                 <div class="stat">
                                     <h4>30+</h4>
@@ -62,7 +86,7 @@
                     </div>
                     <div class="energy-card">
                         <div class="energy-img">
-                            <img src="https://images.unsplash.com/photo-1549445199-3543d831206f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Energía Eólica">
+                            <img src="img/jason-mavrommatis-9HEY1URQIQY-unsplash.jpg" alt="Energía Eólica">
                         </div>
                         <div class="energy-content">
                             <h3>Energía Eólica</h3>
@@ -70,7 +94,7 @@
                             <div class="energy-stats">
                                 <div class="stat">
                                     <h4>85%</h4>
-                                    <p>Disponibilidad</p>
+                                    <p>kW</p>
                                 </div>
                                 <div class="stat">
                                     <h4>25+</h4>
@@ -81,7 +105,7 @@
                     </div>
                     <div class="energy-card">
                         <div class="energy-img">
-                            <img src="https://images.unsplash.com/photo-1555546522-8d76985c4e47?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Energía Hidráulica">
+                            <img src="img/tejj-o8iXJVAahUc-unsplash.jpg" alt="Energía Hidráulica">
                         </div>
                         <div class="energy-content">
                             <h3>Energía Hidráulica</h3>
@@ -89,10 +113,68 @@
                             <div class="energy-stats">
                                 <div class="stat">
                                     <h4>99%</h4>
-                                    <p>Confiabilidad</p>
+                                    <p>kW</p>
                                 </div>
                                 <div class="stat">
                                     <h4>50+</h4>
+                                    <p>Años de vida</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="energy-card">
+                        <div class="energy-img">
+                            <img src="img/nicholas-doherty-pONBhDyOFoM-unsplash.jpg" alt="Energía Maritima">
+                        </div>
+                        <div class="energy-content">
+                            <h3>Energía Maritima</h3>
+                            <p>Aprovechamos la fuerza del mar para generar energía renovable y constante..</p>
+                            <div class="energy-stats">
+                                <div class="stat">
+                                    <h4>%</h4>
+                                    <p>kW</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>25+</h4>
+                                    <p>Años de vida</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="energy-card">
+                        <div class="energy-img">
+                            <img src="img/bernd-dittrich-PmHNqnam8j0-unsplash.jpg" alt="Energía Géotermica">
+                        </div>
+                        <div class="energy-content">
+                            <h3>Energía Geotérmica</h3>
+                            <p>Extraemos el calor de la tierra para producir electricidad sostenible y confiable.</p>
+                            <div class="energy-stats">
+                                <div class="stat">
+                                    <h4>85%</h4>
+                                    <p>kW</p>
+                                </div>
+                                <div class="stat">
+                                    <h4>25+</h4>
+                                    <p>Años de vida</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="energy-card">
+                        <div class="energy-img">
+                            <img src="img/nicola-pavan-LkFNUzrpDVw-unsplash.jpg" alt="Energía Biomasa">
+                        </div>
+                        <div class="energy-content">
+                            <h3>Energía Biomasa</h3>
+                            <p>Transformamos residuos orgánicos en energía limpia y aprovechable.</p>
+                            <div class="energy-stats">
+                                <div class="stat">
+                                    <h4>85%</h4>
+                                    <p>kW</p>
+        
+                                </div>
+                                <div class="stat">
+                                    <h4>25+</h4>
                                     <p>Años de vida</p>
                                 </div>
                             </div>
@@ -107,7 +189,7 @@
                 <h2>Beneficios de la Energía Renovable</h2>
                 <div class="benefits-content">
                     <div class="benefits-text">
-                        <p>La adopción de energías renovables no solo es una elección responsable con el medio ambiente, sino que también ofrece un sinfín de ventajas económicas y sociales. En PowerGreen, estamos comprometidos con un futuro sostenible.</p>
+                        <p>En Enerloop, creemos firmemente que un sistema energético más limpio y eficiente es posible, y trabajamos día a día para hacerlo realidad. Nuestro compromiso está enfocado en crear soluciones que no solo reduzcan el impacto ambiental, sino que también generen oportunidades reales de crecimiento, bienestar y progreso para las comunidades.</p>
                         <ul>
                             <li>Reducción significativa de la huella de carbono.</li>
                             <li>Independencia energética y estabilidad de precios.</li>
@@ -149,7 +231,7 @@
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-info">
-                <h3>Power<span>Green</span></h3>
+                <h3>Ener<span>loop</span></h3>
                 <p>Comprometidos con un futuro sostenible a través de soluciones de energía renovable innovadoras y eficientes.</p>
             </div>
             <div class="footer-links">
@@ -172,7 +254,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 PowerGreen Energy. Todos los derechos reservados.</p>
+            <p>&copy; 2024 Enerloop. Todos los derechos reservados.</p>
         </div>
     </footer>
 
