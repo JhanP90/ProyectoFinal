@@ -10,40 +10,25 @@
     <link rel="stylesheet" href="styles.css">
 
     <style>
-      .bombillo-animado {
-        display: inline-block;
-        animation: bombilloParpadeo 1.5s infinite;
-        filter: brightness(1.2);
-        transition: filter 0.3s ease;
-      }
+        .bombillo-animado {
+            display: inline-block;
+            animation: bombilloParpadeo 1.5s infinite;
+            filter: brightness(1.2);
+            transition: filter 0.3s ease;
+        }
 
-      @keyframes bombilloParpadeo {
-        0%, 100% {
-          opacity: 1;
-          filter: brightness(1.2);
+        @keyframes bombilloParpadeo {
+            0%, 100% {
+                opacity: 1;
+                filter: brightness(1.2);
+            }
+            50% {
+                opacity: 0.4;
+                filter: brightness(0.5);
+            }
         }
-        50% {
-          opacity: 0.4;
-          filter: brightness(0.5);
-        }
-      }
-/*       .stat-eolica {
-  flex-direction: row !important;
-  align-items: flex-end !important;
-  justify-content: center;
-  gap: 0.3em;
-}
-.stat-eolica-num {
-  font-size: 1.2rem !important;
-  font-weight: bold;
-  color: #38b000;
-  line-height: 1;
-}
-.stat-eolica-unit {
-  font-size: 1rem !important;
-  color: #555;
-  margin-left: 0.2em;
-} */
+        
+        /* Ya no se necesita CSS para eliminar chulos aquí porque se eliminó la regla de ::before en styles.css */
     </style>
 </head>
 <body>
@@ -115,7 +100,6 @@
                                 </div>
                                 <div class="stat">
                                     <h4>25+</h4>
-                                    <p>Años de vida</p>
                                 </div>
                             </div>
                         </div>
@@ -177,7 +161,7 @@
                             </div>
                         </div>
                     </div>
-                     <div class="energy-card">
+                    <div class="energy-card">
                         <div class="energy-img">
                             <img src="img/nicola-pavan-LkFNUzrpDVw-unsplash.jpg" alt="Energía Biomasa">
                         </div>
@@ -207,11 +191,11 @@
                     <div class="benefits-text">
                         <p>En Enerloop, creemos firmemente que un sistema energético más limpio y eficiente es posible, y trabajamos día a día para hacerlo realidad. Nuestro compromiso está enfocado en crear soluciones que no solo reduzcan el impacto ambiental, sino que también generen oportunidades reales de crecimiento, bienestar y progreso para las comunidades.</p>
                         <ul>
-                            <li>Reducción significativa de la huella de carbono.</li>
-                            <li>Independencia energética y estabilidad de precios.</li>
-                            <li>Creación de empleos verdes y desarrollo económico local.</li>
-                            <li>Menor contaminación del aire y del agua.</li>
-                            <li>Innovación tecnológica y nuevas oportunidades de inversión.</li>
+                            <li><i class="fas fa-leaf"></i> Reducción significativa de la huella de carbono.</li>
+                            <li><i class="fas fa-bolt"></i> Independencia energética y estabilidad de precios.</li>
+                            <li><i class="fas fa-users"></i> Creación de empleos verdes y desarrollo económico local.</li>
+                            <li><i class="fas fa-water"></i> Menor contaminación del aire y del agua.</li>
+                            <li><i class="fas fa-lightbulb"></i> Innovación tecnológica y nuevas oportunidades de inversión.</li>
                         </ul>
                         <a href="#contact" class="btn">Solicitar Información</a>
                     </div>
@@ -277,59 +261,55 @@
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- animacion de contador de kw -->
-
     <script>
-      function animateCounter(element, endValue, duration = 1500) {
-        let start = 0;
-        const isInt = Number.isInteger(endValue);
-        const startTime = performance.now();
-        function update(currentTime) {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const value = Math.floor(progress * (endValue - start) + start);
-          element.textContent = isInt ? value.toLocaleString('es-ES') : value;
-          if (progress < 1) {
-            requestAnimationFrame(update);
-          } else {
-            element.textContent = isInt ? endValue.toLocaleString('es-ES') : endValue;
-          }
-        }
-        requestAnimationFrame(update);
-      }
-
-      function parseNumber(str) {
-        // Quita puntos, comas y signos no numéricos
-        return parseInt(str.replace(/[^\d]/g, ''));
-      }
-
-      document.addEventListener('DOMContentLoaded', function() {
-        // Animar solo los kW
-        const stats = document.querySelectorAll('.stat');
-        stats.forEach(stat => {
-          const h4 = stat.querySelector('h4');
-          const p = stat.querySelector('p');
-          if (p && p.textContent.trim() === 'kW') {
-            // Solo animar los kW
-            const observer = new window.IntersectionObserver((entries, obs) => {
-              entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                  const el = entry.target;
-                  const finalValue = parseNumber(el.textContent);
-                  if (!el.classList.contains('counted') && !isNaN(finalValue)) {
-                    animateCounter(el, finalValue, 3000);
-                    el.classList.add('counted');
-                  }
-                  obs.unobserve(el);
+        function animateCounter(element, endValue, duration = 1500) {
+            let start = 0;
+            const isInt = Number.isInteger(endValue);
+            const startTime = performance.now();
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const value = Math.floor(progress * (endValue - start) + start);
+                element.textContent = isInt ? value.toLocaleString('es-ES') : value;
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                } else {
+                    element.textContent = isInt ? endValue.toLocaleString('es-ES') : endValue;
                 }
-              });
-            }, { threshold: 0.5 });
-            observer.observe(h4);
-          }
+            }
+            requestAnimationFrame(update);
+        }
+
+        function parseNumber(str) {
+            // Quita puntos, comas y signos no numéricos
+            return parseInt(str.replace(/[^\d]/g, ''));
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animar solo los kW
+            const stats = document.querySelectorAll('.stat');
+            stats.forEach(stat => {
+                const h4 = stat.querySelector('h4');
+                const p = stat.querySelector('p');
+                if (p && p.textContent.trim() === 'kW') {
+                    // Solo animar los kW
+                    const observer = new window.IntersectionObserver((entries, obs) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                const el = entry.target;
+                                const finalValue = parseNumber(el.textContent);
+                                if (!el.classList.contains('counted') && !isNaN(finalValue)) {
+                                    animateCounter(el, finalValue, 3000);
+                                    el.classList.add('counted');
+                                }
+                                obs.unobserve(el);
+                            }
+                        });
+                    }, { threshold: 0.5 });
+                    observer.observe(h4);
+                }
+            });
         });
-      });
     </script>
-    <!-- fin del codigo de contador de kw -->
-    
-</body>
+    </body>
 </html>

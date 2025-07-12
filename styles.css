@@ -480,18 +480,18 @@ h2::after {
 }
 
 .energy-content h3 {
-        min-height: 3em;
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        text-align: left;
-        width: 100%;
-        padding-left: 0;
-        margin-left: 0;
-        white-space: nowrap;
-        font-size: 1.6rem; /* Puedes ajustar el tamaño si es necesario */
-        overflow: hidden;
-        text-overflow: ellipsis;
+    min-height: 3em;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    width: 100%;
+    padding-left: 0;
+    margin-left: 0;
+    white-space: nowrap;
+    font-size: 1.6rem; /* Puedes ajustar el tamaño si es necesario */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .energy-content p {
@@ -558,23 +558,34 @@ h2::after {
 
 .benefits-text li {
     margin-bottom: 1.2rem;
-    position: relative;
-    padding-left: 2.2rem; /* Espacio para el icono personalizado */
     font-size: 1.08rem;
     color: var(--dark-color);
     font-weight: 600;
+
+    /* CAMBIOS IMPLEMENTADOS PARA ALINEACIÓN DE ÍCONOS */
+    display: flex; /* Convierte el li en un contenedor flex */
+    align-items: center; /* ALINEACIÓN CENTRAL VERTICALMENTE */
+    /* Se cambió de 'flex-start' a 'center' para una mejor alineación visual del ícono con el texto */
 }
 
-.benefits-text li::before {
-    content: '\f00c'; /* Icono de checkmark de Font Awesome */
-    font-family: 'Font Awesome 5 Free'; /* Asegura que se use la fuente correcta */
-    font-weight: 900; /* Para obtener la versión sólida del icono */
-    position: absolute;
-    left: 0;
-    color: var(--primary-color);
-    font-size: 1.3rem;
-    top: 2px;
+/* Nuevo estilo para los iconos de Font Awesome dentro de los 'li' */
+.benefits-text li .fa,
+.benefits-text li .fas,
+.benefits-text li .far,
+.benefits-text li .fab {
+    color: var(--primary-color); /* Aplica el color verde a los iconos */
+    margin-right: 15px; /* Espacio entre el icono y el texto */
+    font-size: 1.3rem; /* Tamaño del icono */
+    flex-shrink: 0; /* Asegura que el icono no se encoja ni crezca */
+
+    /* CAMBIOS IMPLEMENTADOS PARA ALINEACIÓN VISUAL DE ÍCONOS */
+    width: 1.5em; /* Ancho fijo para todos los íconos (ajustado para consistencia) */
+    text-align: center; /* Centra el ícono dentro de su ancho fijo */
+    text-shadow: none; /* Asegura que no haya sombra de texto no deseada */
+    filter: none; /* Asegura que no haya filtros CSS inesperados */
+    vertical-align: middle; /* Puede ayudar en algunos navegadores a alinear con el texto */
 }
+
 
 .benefits-chart-container {
     background: linear-gradient(135deg, var(--light-color), #e6f5e6);
@@ -802,6 +813,11 @@ h2::after {
         margin: 2rem auto; /* Centra la lista */
     }
 
+    /* Ajuste para que los li dentro de la lista centrada se alineen correctamente */
+    .benefits-text li {
+        justify-content: flex-start; /* Alinea los elementos al inicio en modo horizontal (izquierda) */
+    }
+
     .benefits-chart-container {
         margin-top: 2.5rem; /* Margen superior para el contenedor del gráfico */
     }
@@ -910,6 +926,10 @@ h2::after {
 
     .social-icons {
         justify-content: center; /* Centra los iconos sociales */
+    }
+
+    .benefits-text li {
+        justify-content: flex-start; /* Asegura la alineación a la izquierda en móviles también */
     }
 }
 
