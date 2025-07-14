@@ -63,10 +63,15 @@ El sitio está diseñado con un enfoque moderno y accesible, destacando sus solu
 - Acordeón interactivo para responder dudas comunes.
 - Diseño responsivo y animaciones de apertura/cierre.
 
-### 📬 Formulario de Contacto
 
-- Recolección de datos básicos del usuario.
-- Botón para envío de mensaje (requiere backend para funcionalidad completa).
+## 🙌 Créditos y Agradecimientos
+
+Este proyecto fue desarrollado con fines académicos y de concienciación ambiental.
+
+**Autor principal:** Jhan pool Posada , Juan Jose Toro , Antonio Jose Cardona.
+**Agradecimientos:** A Talento tecg, docentes y colegas que aportaron ideas para el diseño e interactividad.
 
 ---
+
+> 💡 *“Conectamos hoy con la energía del mañana” – Enerloop*
 
