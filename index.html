@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="styles.css">
 
+    <!-- Animaciones del bombillo -->
     <style>
         .bombillo-animado {
             display: inline-block;
@@ -28,10 +29,10 @@
             }
         }
         
-        /* Ya no se necesita CSS para eliminar chulos aquí porque se eliminó la regla de ::before en styles.css */
     </style>
 </head>
 <body>
+    <!-- Seccion del header -->
     <header class="header">
         <div class="container nav">
             <a href="#" class="logo"><span class="bombillo-animado">💡</span>Ener<span>loop</span></a>
@@ -40,10 +41,14 @@
                 <i class="fas fa-bars"></i>
             </button>
 
+            <!-- Seccion de menu del header -->
             <nav class="nav-menu-list">
                 <ul class="nav-menu">
                     <li class="nav-menu-item"><a href="#hero" class="nav-menu-link">Inicio</a></li>
-                    <li class="nav-menu-item"><a href="#energy-types" class="nav-menu-link">Tipos de Energía</a></li>
+                    <li class="nav-menu-item"><a href="#about" class="nav-menu-link">Nosotros</a></li>
+                    <li class="nav-menu-item"><a href="#energy-types" class="nav-menu-link">Tipos</a></li>
+                    <li class="nav-menu-item"><a href="#projects" class="nav-menu-link">Proyectos</a></li>
+                    <li class="nav-menu-item"><a href="#calculator" class="nav-menu-link">Calculadora</a></li>
                     <li class="nav-menu-item"><a href="#benefits" class="nav-menu-link">Beneficios</a></li>
                     <li class="nav-menu-item"><a href="#contact" class="nav-menu-link">Contacto</a></li>
                 </ul>
@@ -51,18 +56,75 @@
         </div>
     </header>
 
+    <!-- Seccion del pie de pagina -->
     <main>
         <section id="hero" class="hero">
             <div class="container hero-content-wrapper">
                 <h1>Conectamos hoy con la energía del <span class="text-bold">Mañana</span></h1>
                 <p class="hero-subtitle">Energía solar, eólica y más para un mañana sostenible.</p>
-                <a href="#energy-types" class="btn">Ver Soluciones</a>
+                <a href="#about" class="btn">Ver Soluciones</a>
                 <div class="scroll-down-indicator">
                     <i class="fas fa-chevron-down"></i>
                 </div>
             </div>
         </section>
 
+
+        <!-- Seccion de quinees somos nostros -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Sobre Enerloop</h2>
+                        <h3>Líderes en Energía Renovable desde 2015</h3>
+                        <p>Con más de 9 años de experiencia en el sector de energías renovables, Enerloop se ha consolidado como una empresa líder en soluciones energéticas sostenibles. Hemos ayudado a más de 500 empresas y hogares a realizar la transición hacia un futuro más limpio y eficiente.</p>
+                        
+                        <div class="about-stats">
+                            <div class="about-stat">
+                                <h4>500+</h4>
+                                <p>Proyectos Completados</p>
+                            </div>
+                            <div class="about-stat">
+                                <h4>50MW</h4>
+                                <p>Energía Instalada</p>
+                            </div>
+                            <div class="about-stat">
+                                <h4>95%</h4>
+                                <p>Satisfacción del Cliente</p>
+                            </div>
+                            <div class="about-stat">
+                                <h4>12,000t</h4>
+                                <p>CO₂ Reducido Anualmente</p>
+                            </div>
+                        </div>
+
+                        <div class="mission-vision">
+                            <div class="mission">
+                                <h4><i class="fas fa-bullseye"></i> Nuestra Misión</h4>
+                                <p>Democratizar el acceso a energías limpias y renovables, proporcionando soluciones innovadoras que beneficien tanto al medio ambiente como a la economía de nuestros clientes.</p>
+                            </div>
+                            <div class="vision">
+                                <h4><i class="fas fa-eye"></i> Nuestra Visión</h4>
+                                <p>Ser la empresa líder en Latinoamérica en soluciones de energía renovable, contribuyendo significativamente a la reducción de la huella de carbono global.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="img/WhatsApp Image 2025-07-11 at 9.45.08 AM.jpeg" alt="Equipo Enerloop">
+                        <div class="about-certifications">
+                            <h4>Certificaciones</h4>
+                            <div class="cert-items">
+                                <span class="cert-badge">ISO 14001</span>
+                                <span class="cert-badge">ISO 9001</span>
+                                <span class="cert-badge">OHSAS 18001</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seccion de nuestros tipos energia -->
         <section id="energy-types" class="energy-types">
             <div class="container">
                 <h2>Nuestros Tipos de Energía</h2>
@@ -100,6 +162,7 @@
                                 </div>
                                 <div class="stat">
                                     <h4>25+</h4>
+                                    <p>Años de vida</p>
                                 </div>
                             </div>
                         </div>
@@ -184,6 +247,230 @@
             </div>
         </section>
 
+        <!-- Seccion de proyectos expuestos -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2>Proyectos Destacados</h2>
+                
+                <p class="projects-subtitle">Conoce algunos de nuestros proyectos más exitosos que están marcando la diferencia</p>
+                
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="imgPrincipales/pexels-pixabay-356036.jpg" alt="Proyecto Solar Industrial">
+                            <div class="project-overlay">
+                                <span class="project-type">Energía Solar</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Complejo Industrial Palma seca (Cali)</h3>
+                            <p>Instalación de 2.5 MW de paneles solares que abastece el 80% del consumo energético de la planta industrial.</p>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <strong>2.5MW</strong>
+                                    <span>Capacidad</span>
+                                </div>
+                                <div class="project-stat">
+                                    <strong>85%</strong>
+                                    <span>Ahorro Anual</span>
+                                </div>
+                                <div class="project-stat">
+                                    <strong>180t</strong>
+                                    <span>CO₂ Reducido/año</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="imgPrincipales/richard-james-sgmE-B_0p_I-unsplash.jpg" alt="Proyecto Eólico">
+                            <div class="project-overlay">
+                                <span class="project-type">Energía Eólica</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3>Parque Eólico Vientos del Norte (Barranquilla)</h3>
+                            <p>15 aerogeneradores que generan energía limpia para más de 8,000 hogares en la región norte del país.</p>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <strong>15MW</strong>
+                                    <span>Capacidad</span>
+                                </div>
+                                <div class="project-stat">
+                                    <strong>8,000</strong>
+                                    <span>Hogares</span>
+                                </div>
+                                <div class="project-stat">
+                                    <strong>1,200t</strong>
+                                    <span>CO₂ Reducido/año</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="imgPrincipales/soham-banerjee-3xat6sro3qM-unsplash.jpg" alt="Proyecto Hidráulico">
+                            <div class="project-overlay">
+                                <span class="project-type">Energía Hidráulica</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3> Central Río Guasca (Amazonas)</h3>
+                            <p>Central hidroeléctrica de pequeña escala que aprovecha el caudal del río para generar energía sostenible.</p>
+                            <div class="project-stats">
+                                <div class="project-stat">
+                                    <strong>1.8MW</strong>
+                                    <span>Capacidad</span>
+                                </div>
+                                <div class="project-stat">
+                                    <strong>24/7</strong>
+                                    <span>Operación</span>
+                                </div>
+                                <div class="project-stat">
+                                    <strong>95%</strong>
+                                    <span>Eficiencia</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seccion de FAQ -->
+                <div class="testimonials">
+                    <h3>Lo que dicen nuestros clientes</h3>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"Enerloop transformó completamente nuestro consumo energético. En 18 meses hemos reducido nuestros costos en un 70% y nuestra huella de carbono significativamente."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>Balatro Balatrez</h4>
+                                    <span>Directora de Operaciones, Industrias del Futuro</span>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"La instalación fue impecable y el servicio post-venta excepcional. Nuestro sistema solar lleva 3 años funcionando a la perfección. Altamente recomendados."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>Cristian beltran</h4>
+                                    <span>Propietario, Finca Los Robles</span>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                <p>"El equipo de Enerloop nos asesoró desde el primer día. La inversión se pagó sola en menos de 4 años y ahora generamos energía excedente que vendemos a la red."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-info">
+                                    <h4>Rosalbita</h4>
+                                    <span>CEO, Tecnologías Verdes S.A.</span>
+                                </div>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seccion de calculadora -->
+        <section id="calculator" class="calculator">
+            <div class="container">
+                <h2>Calculadora de Ahorro Energético</h2>
+                <p class="calculator-subtitle">Descubre cuánto puedes ahorrar con energía renovable</p>
+                
+                <div class="calculator-content">
+                    <div class="calculator-form">
+                        <div class="calc-group">
+                            <label for="monthlyBill">Factura mensual promedio (COP)</label>
+                            <input type="number" id="monthlyBill" placeholder="Ej: 350,000" min="50000" max="5000000">
+                        </div>
+                        
+                        <div class="calc-group">
+                            <label for="energyType">Tipo de energía renovable</label>
+                            <select id="energyType">
+                                <option value="solar">Energía Solar</option>
+                                <option value="eolica">Energía Eólica</option>
+                                <option value="hibrido">Sistema Híbrido</option>
+                            </select>
+                        </div>
+                        
+                        <div class="calc-group">
+                            <label for="propertySize">Tamaño de propiedad (m²)</label>
+                            <input type="number" id="propertySize" placeholder="Ej: 200" min="50" max="50000">
+                        </div>
+                        
+                        <div class="calc-group">
+                            <label for="region">Región</label>
+                            <select id="region">
+                                <option value="tropical">Tropical (alta radiación)</option>
+                                <option value="templado">Templado (radiación media)</option>
+                                <option value="montano">Montañoso (radiación variable)</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn calc-btn" onclick="calculateSavings()">Calcular Ahorros</button>
+                    </div>
+                    
+                    <div class="calculator-results" id="calculatorResults" style="display: none;">
+                        <h3>Resultados de tu Cálculo</h3>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <h4 id="monthlyaSavings">$0</h4>
+                                <p>Ahorro mensual estimado</p>
+                            </div>
+                            <div class="result-item">
+                                <h4 id="yearllySavings">$0</h4>
+                                <p>Ahorro anual estimado</p>
+                            </div>
+                            <div class="result-item">
+                                <h4 id="roi">0 años</h4>
+                                <p>Retorno de inversión</p>
+                            </div>
+                            <div class="result-item">
+                                <h4 id="co2Reduction">0 t</h4>
+                                <p>Reducción CO₂ anual</p>
+                            </div>
+                        </div>
+                        <div class="result-actions">
+                            <a href="#contact" class="btn">Solicitar Cotización Personalizada</a>
+                            <button class="btn-secondary" onclick="resetCalculator()">Calcular Nuevamente</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seccion de beneficios -->
         <section id="benefits" class="benefits">
             <div class="container">
                 <h2>Beneficios de la Energía Renovable</h2>
@@ -206,6 +493,77 @@
             </div>
         </section>
 
+        <!-- Seccion de preguntas frecuentes -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <h2>Preguntas Frecuentes</h2>
+                <p class="faq-subtitle">Resolvemos las dudas más comunes sobre energía renovable</p>
+                
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Cuánto tiempo tarda la instalación de un sistema solar?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>El tiempo de instalación depende del tamaño del sistema. Para una vivienda promedio (4-6 kW), la instalación toma entre 1-2 días. Para proyectos comerciales o industriales, puede tomar de 1-4 semanas dependiendo de la complejidad y capacidad del sistema.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Qué mantenimiento requieren los paneles solares?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Los paneles solares requieren muy poco mantenimiento. Se recomienda una limpieza básica cada 6 meses y una inspección técnica anual. Nosotros ofrecemos paquetes de mantenimiento preventivo para garantizar el óptimo rendimiento de tu sistema.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Funciona la energía solar en días nublados?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí, los paneles solares funcionan en días nublados, aunque con menor eficiencia (aproximadamente 20-40% de su capacidad total). Los sistemas modernos están diseñados para aprovechar incluso la luz difusa. Además, ofrecemos sistemas híbridos con almacenamiento para mayor confiabilidad.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Cuál es la vida útil de un sistema de energía renovable?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Los paneles solares tienen una garantía de 25-30 años y pueden funcionar eficientemente por más de 35 años. Los inversores duran 10-15 años y las baterías (si las incluye) entre 10-15 años. Ofrecemos garantías extendidas y programas de reemplazo.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Puedo vender el exceso de energía que genero?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí, dependiendo de la regulación local, puedes vender el exceso de energía a la red eléctrica a través de un sistema de medición neta (net metering). Te asesoramos en todos los trámites legales y conexiones necesarias con la empresa distribuidora.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>¿Ofrecen financiamiento para los proyectos?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Sí, trabajamos con diferentes entidades financieras para ofrecer planes de financiamiento flexibles. Desde leasing operativo hasta créditos con tasas preferenciales. También ayudamos a acceder a incentivos gubernamentales y programas de apoyo a energías renovables.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seccion de Contactos -->
         <section id="contact" class="contact">
             <div class="container">
                 <h2>Contáctanos</h2>
@@ -228,6 +586,7 @@
         </section>
     </main>
 
+    <!-- Seccion del pie de pagina -->
     <footer class="footer">
         <div class="container footer-content">
             <div class="footer-info">
@@ -238,7 +597,10 @@
                 <h3>Enlaces Rápidos</h3>
                 <ul>
                     <li><a href="#hero">Inicio</a></li>
+                    <li><a href="#about">Nosotros</a></li>
                     <li><a href="#energy-types">Tipos de Energía</a></li>
+                    <li><a href="#projects">Proyectos</a></li>
+                    <li><a href="#calculator">Calculadora</a></li>
                     <li><a href="#benefits">Beneficios</a></li>
                     <li><a href="#contact">Contacto</a></li>
                 </ul>
@@ -260,56 +622,5 @@
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script>
-        function animateCounter(element, endValue, duration = 1500) {
-            let start = 0;
-            const isInt = Number.isInteger(endValue);
-            const startTime = performance.now();
-            function update(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const value = Math.floor(progress * (endValue - start) + start);
-                element.textContent = isInt ? value.toLocaleString('es-ES') : value;
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                } else {
-                    element.textContent = isInt ? endValue.toLocaleString('es-ES') : endValue;
-                }
-            }
-            requestAnimationFrame(update);
-        }
-
-        function parseNumber(str) {
-            // Quita puntos, comas y signos no numéricos
-            return parseInt(str.replace(/[^\d]/g, ''));
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Animar solo los kW
-            const stats = document.querySelectorAll('.stat');
-            stats.forEach(stat => {
-                const h4 = stat.querySelector('h4');
-                const p = stat.querySelector('p');
-                if (p && p.textContent.trim() === 'kW') {
-                    // Solo animar los kW
-                    const observer = new window.IntersectionObserver((entries, obs) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                const el = entry.target;
-                                const finalValue = parseNumber(el.textContent);
-                                if (!el.classList.contains('counted') && !isNaN(finalValue)) {
-                                    animateCounter(el, finalValue, 3000);
-                                    el.classList.add('counted');
-                                }
-                                obs.unobserve(el);
-                            }
-                        });
-                    }, { threshold: 0.5 });
-                    observer.observe(h4);
-                }
-            });
-        });
-    </script>
     </body>
 </html>
