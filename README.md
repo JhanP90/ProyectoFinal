@@ -68,8 +68,9 @@ El sitio está diseñado con un enfoque moderno y accesible, destacando sus solu
 
 Este proyecto fue desarrollado con fines académicos y de concienciación ambiental.
 
-**Autor principal:** Jhan pool Posada , Juan Jose Toro , Antonio Jose Cardona.
-**Agradecimientos:** A Talento tecg, docentes y colegas que aportaron ideas para el diseño e interactividad.
+**Autor principal:** Jhan pool Posada, Juan Jose Toro, Antonio Jose Cardona.
+
+**Agradecimientos:** A Talento tech, docentes y colegas que aportaron ideas para el diseño e interactividad.
 
 ---
 
