@@ -70,11 +70,3 @@ El sitio está diseñado con un enfoque moderno y accesible, destacando sus solu
 
 ---
 
-## 📈 Lógica de la Calculadora
-
-```js
-const monthlySavings = monthlyBill * efficiencyFactor * regionMultiplier * energyMultiplier * 0.8;
-const yearlySavings = monthlySavings * 12;
-const estimatedCost = systemSize * 6500000; // COP por kW instalado
-const roi = estimatedCost / yearlySavings;
-const co2Reduction = systemSize * 1.5; // t CO2 por año
